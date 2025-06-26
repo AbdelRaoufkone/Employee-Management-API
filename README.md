@@ -90,4 +90,4 @@ Pour l’utiliser :
 5. Modifie l’URL de base si besoin (variables d’environnement) pour pointer vers `http://localhost:8080`.
 6. Lance les requêtes pour tester l’API.
 
-Pour toute question ou problème, n’hésite pas à ouvrir un ticket (issue) dans le dépôt.
+Pour toute question ou problème, n’hésitez pas à ouvrir un ticket (issue) dans le dépôt.
