@@ -1,0 +1,14 @@
+# grafana/provisioning/dashboards/dashboards.yml
+apiVersion: 1
+
+providers:
+  - name: 'Default' # Nom du fournisseur (peut être n'importe quoi)
+    orgId: 1
+    folder: '' # Les tableaux de bord seront ajoutés à la racine
+    type: file
+    disableDelete: false # Permet de supprimer les tableaux de bord via l'UI de Grafana
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards # Chemin dans le conteneur où les fichiers JSON de tableaux de bord sont montés
+      intervalSeconds: 10 # Fréquence de vérification des mises à jour des fichiers de tableaux de bord
+      foldersFromFiles: false

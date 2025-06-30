@@ -49,14 +49,21 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
-      - "3000:3000" 
+      - "3000:3000" # Port par défaut de Grafana
     volumes:
-      - grafana_data:/var/lib/grafana 
+      # Pour la persistance des données internes de Grafana (utilisateurs, etc.)
+      - grafana_data:/var/lib/grafana
+      # Monter le répertoire de provisioning des sources de données
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      # Monter le répertoire de provisioning des tableaux de bord
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      # Monter le répertoire contenant les fichiers JSON des tableaux de bord
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
     depends_on:
-      - prometheus 
+      - prometheus
     environment:
-       GF_SECURITY_ADMIN_USER: admin
-       GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin # Définir le mot de passe admin par défaut
     networks:
       - app-network
       
