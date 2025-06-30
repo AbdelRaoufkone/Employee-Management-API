@@ -90,4 +90,28 @@ Pour l’utiliser :
 5. Modifie l’URL de base si besoin (variables d’environnement) pour pointer vers `http://localhost:8080`.
 6. Lance les requêtes pour tester l’API.
 
+## Monitoring avec Prometheus & Grafana
+    
+L’application expose des métriques via Spring Boot Actuator et intègre une solution complète de monitoring temps réel à l’aide de Prometheus et Grafana.
+1.  **Lancement du monitoring** :
+   Le monitoring est automatiquement configuré avec Docker Compose :
+    ```bash
+       docker-compose up --build
+    ```
+    *Les services suivants seront accessibles :*
+* **Prometheus**: http://localhost:9090 .
+* **Grafana**: http://localhost:3000 (login: admin / admin).
+
+<img width="1280" alt="Capture d’écran 2025-06-30 à 01 23 58" src="https://github.com/user-attachments/assets/ff7ffee2-14db-4a7b-982a-c8a9f6981246" />
+
+
+2.  **Provisioning automatique** :
+   Grafana est préconfiguré pour :
+       . Se connecter à Prometheus en datasource
+       . Charger un dashboard personnalisé Spring Boot depuis le dossier grafana/dashboards
+    
+3.  **Accès aux métriques Prometheus** :
+   Tu peux visualiser directement les métriques exposées par Spring Boot à l’adresse suivante :
+   `http://localhost:8080/actuator/prometheus`
+
 Pour toute question ou problème, n’hésitez pas à ouvrir un ticket (issue) dans le dépôt.
